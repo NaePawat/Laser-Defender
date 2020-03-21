@@ -10,12 +10,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 0.5f;
+    [SerializeField] int enemyScoreValue = 150;
 
     [Header("EnemyCompo")]
     [SerializeField] GameObject enemyLaserPrefabs;
     [SerializeField] float projectileSpeed = 0.5f;
     [SerializeField] GameObject DeathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+
+    [Header("SFX")]
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0,1)] float deathSFXVolume=0.5f;
     [SerializeField] AudioClip shootSFX;
@@ -59,6 +62,7 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit();
         if (health <= 0)
         {
+            FindObjectOfType<GameSession>().AddToScore(enemyScoreValue);
             GameObject VFX =Instantiate(DeathVFX, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(VFX, durationOfExplosion);

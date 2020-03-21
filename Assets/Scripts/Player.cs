@@ -80,8 +80,10 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        
         Destroy(gameObject);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+        FindObjectOfType<Level>().LoadGameOver();
     }
 
     private void Move()
@@ -100,5 +102,10 @@ public class Player : MonoBehaviour
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - pudding;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + pudding;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - pudding;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
