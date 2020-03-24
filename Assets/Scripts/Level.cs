@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
     public void LoadStartMenu()
     {
         SceneManager.LoadScene(0);
-        FindObjectOfType<MusicPlayer>().ResetSound();
+        //FindObjectOfType<MusicPlayer>().ResetSound();
     }
 
     public void LoadMainGame()

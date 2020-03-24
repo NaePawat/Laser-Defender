@@ -9,11 +9,11 @@ public class MusicPlayer : MonoBehaviour
     void Awake()
     {
         SetupSingleton();
-      
     }
 
     private void SetupSingleton()
     {
+        int numberMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
         if (FindObjectsOfType(GetType()).Length>1)
         {
             Destroy(gameObject);
@@ -28,3 +28,5 @@ public class MusicPlayer : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
+//FindObjectsOfType(GetType()).Length <-- other approach
